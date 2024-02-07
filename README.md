@@ -1,6 +1,6 @@
 # Welcome to the AirBnB clone project!
 
-## Write a command interpreter to manage your AirBnB objects.
+## a command interpreter to manage the AirBnB objects.
 
 This is the first step towards building a full web application
 
