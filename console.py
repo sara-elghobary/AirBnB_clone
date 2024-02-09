@@ -70,17 +70,17 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id (save the change into the JSON file)."""
         args = arg.split()
-        if not args:
+        if not args[1]:
             print("** class name missing **")
             return
-        class_name = args[0]
+        class_name = args[1]
         if class_name not in globals():
             print("** class doesn't exist **")
             return
-        if len(args) < 2:
+        if len(args) < 3:
             print("** instance id missing **")
             return
-        instance_id = args[1]
+        instance_id = args[2]
         instance_key = f"{class_name}.{instance_id}"
         if instance_key not in storage.all():
             print("** no instance found **")
@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             instances = storage.all()
-        elif args[0] not in globals():
+        elif args[1] not in globals():
             print("** class doesn't exist **")
             return
         else:
@@ -105,10 +105,10 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Update an instance with a new attribute value."""
         args = arg.split()
-        if len(args) < 3:
+        if len(args) < 4:
             print("** class name missing **")
             return
-        class_name, instance_id, attr_name = args[:3]
+        class_name, instance_id, attr_name = args[:4]
         if class_name not in globals():
             print("** class doesn't exist **")
             return
