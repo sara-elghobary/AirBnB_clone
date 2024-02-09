@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             instances = storage.all()
-        elif args[1] not in globals():
+        elif args[0] not in self.classes:
             print("** class doesn't exist **")
             return
         else:
