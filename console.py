@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
             return
         class_name = args[0]
         try:
-            new_instance = globals()[class_name]()
+            instance = globals()[class_name]()
             instance.save()
             print(instance.id)
         except KeyError:
@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         """Show the string representation of an instance based on class name and id."""
         args = arg.split()
         if len(args) != 2:
-            print("** class name and id required **")
+            print("** class name missing **")
             return
         class_name, instance_id = args
         if class_name not in globals():
@@ -63,20 +63,24 @@ class HBNBCommand(cmd.Cmd):
             return
         instance = storage.all().get(f"{class_name}.{instance_id}")
         if instance is None:
-            print("** no instance found **")
+            print("** instance id missing **")
             return
         print(instance)
 
     def do_destroy(self, arg):
-        """Delete an instance based on class name and id."""
+        """Deletes an instance based on the class name and id (save the change into the JSON file)."""
         args = arg.split()
-        if len(args) != 2:
-            print("** class name and id required **")
+        if not args:
+            print("** class name missing **")
             return
-        class_name, instance_id = args
+        class_name = args[0]
         if class_name not in globals():
             print("** class doesn't exist **")
             return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        instance_id = args[1]
         instance_key = f"{class_name}.{instance_id}"
         if instance_key not in storage.all():
             print("** no instance found **")
@@ -102,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         """Update an instance with a new attribute value."""
         args = arg.split()
         if len(args) < 3:
-            print("** class name, id, and attribute name required **")
+            print("** class name missing **")
             return
         class_name, instance_id, attr_name = args[:3]
         if class_name not in globals():
