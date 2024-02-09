@@ -3,12 +3,17 @@
 
 import cmd
 from models import storage
+from models.user import User
+from models.base_model import BaseModel
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
     """Interactive command interpreter for HBNB."""
 
     prompt = "(hbnb) "
+
+    classes = {'BaseModel': BaseModel, 'User': User}
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -37,19 +42,20 @@ class HBNBCommand(cmd.Cmd):
         # No specific command given; print all commands
         cmd.Cmd.do_help(self, arg)
 
-    def do_create(self, arg):
-        """Create a new instance of BaseModel, save it, and print the id."""
-        args = arg.split()
-        if len(args) != 1:
-            print("** class name missing **")
-            return
-        class_name = args[0]
-        try:
-            instance = globals()[class_name]()
-            instance.save()
-            print(instance.id)
-        except KeyError:
+
+    def do_create(self, line):
+        """Creates a new instance of BaseModel.
+        """
+        command = self.parseline(line)[0]
+        if command is None:
+            print('** class name missing **')
+        elif command not in self.classes:
             print("** class doesn't exist **")
+        else:
+            new_obj = self.classes[command]()
+            new_obj.save()
+            print(new_obj.id)
+
 
     def do_show(self, arg):
         """Show the string representation of an instance based on class name and id."""
@@ -125,8 +131,8 @@ class HBNBCommand(cmd.Cmd):
             return
         attr_value = args[4]
         try:
-            attr_value = eval(attr_value)
-        except Exception as e:
+            attr_value = ast.literal_eval(attr_value)
+        except (ValueError, SyntaxError) as e:
             print("** value parsing error **")
             return
         setattr(instance, attr_name, attr_value)
