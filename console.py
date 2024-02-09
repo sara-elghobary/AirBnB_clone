@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         print(instance)
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id (save the change into the JSON file)."""
+        """Deletes an instance based on the class name and id."""
         args = line.split()
         if not args:
             print("** class name missing **")
@@ -111,32 +111,42 @@ class HBNBCommand(cmd.Cmd):
         print([str(v) for v in instances.values()])
 
     def do_update(self, arg):
-        """Update an instance with a new attribute value."""
+        """Updates an instance based on the class name and id"""
         args = arg.split()
-        if not args[1]:
+        if not args:
             print("** class name missing **")
             return
-        class_name, instance_id, attr_name = args[:5]
-        if class_name not in globals():
+        class_name = args[0]
+        if class_name not in self.classes:
             print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+
+        instance_id = args[1]
+        attr_name = args[2]
+
+        if attr_name in ["id", "created_at", "updated_at"]:
+            print("** cannot update immutable fields **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        attr_value = args[3]
+        try:
+            attr_value = eval(attr_value)
+        except Exception as e:
+            print("** value parsing error **")
             return
         instance_key = f"{class_name}.{instance_id}"
         if instance_key not in storage.all():
             print("** no instance found **")
             return
         instance = storage.all()[instance_key]
-        if attr_name in ["id", "created_at", "updated_at"]:
-            print("** cannot update immutable fields **")
-            return
-        if len(args) == 3:
-            print("** value missing **")
-            return
-        attr_value = args[4]
-        try:
-            attr_value = ast.literal_eval(attr_value)
-        except (ValueError, SyntaxError) as e:
-            print("** value parsing error **")
-            return
         setattr(instance, attr_name, attr_value)
         instance.save()
 
