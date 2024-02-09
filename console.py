@@ -105,10 +105,10 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Update an instance with a new attribute value."""
         args = arg.split()
-        if len(args) < 4:
+        if not args[1]:
             print("** class name missing **")
             return
-        class_name, instance_id, attr_name = args[:4]
+        class_name, instance_id, attr_name = args[:5]
         if class_name not in globals():
             print("** class doesn't exist **")
             return
@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 3:
             print("** value missing **")
             return
-        attr_value = args[3]
+        attr_value = args[4]
         try:
             attr_value = eval(attr_value)
         except Exception as e:
