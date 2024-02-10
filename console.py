@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         print("Unknown command '{}'".format(line))
 
     def do_help(self, arg):
-        """List available commands with 'help' or detailed help with 'help cmd'."""
+        """List available commands or detailed help of a certain command."""
         if arg:
             # Try to find a matching command and call its .__doc__ attribute
             if arg in self.get_names():
@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_obj.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the class name and id."""
+        """Prints the string representation of an instance."""
         args = arg.split()
         if not args:
             print("** class name missing **")
@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, arg):
-        """Print all string representations of instances, optionally filtered by class name."""
+        """Print all string representations of instances."""
         args = arg.split()
         if not args:
             instances = storage.all()
