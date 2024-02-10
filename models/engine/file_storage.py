@@ -48,3 +48,13 @@ class FileStorage:
                         self.__objects[k] = User(**v)
                     elif cls_name == "BaseModel":
                         self.__objects[k] = BaseModel(**v)
+                    elif cls_name == "State":
+                        self.__objects[k] = State(**v)
+                    elif cls_name == "City":
+                        self.__objects[k] = City(**v)
+                    elif cls_name == "Amenity":
+                        self.__objects[k] = Amenity(**v)
+                    elif cls_name == "Place":
+                        self.__objects[k] = Place(**v)
+                    elif cls_name == "Review":
+                        self.__objects[k] = Review(**v)

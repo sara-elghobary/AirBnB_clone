@@ -6,6 +6,11 @@ from models import storage
 from models.user import User
 from models.base_model import BaseModel
 import ast
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,7 +18,9 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    classes = {"BaseModel": BaseModel, "User": User}
+    classes = {'BaseModel': BaseModel, 'User': User,
+                   'Amenity': Amenity, 'City': City, 'State': State,
+                   'Place': Place, 'Review': Review}
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
