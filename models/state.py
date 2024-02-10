@@ -2,7 +2,7 @@
 """State Module
 
 This Module inherits from BaseModel class.
-State Module contains the name attributes 
+State Module contains the name attributes
 
 """
 
