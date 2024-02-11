@@ -44,8 +44,8 @@ The console works both in interactive mode and non-interactive mode, much like a
 |Quit the console|`(hbnb) quit`|
 |Display the help for a command|`(hbnb) help <command>`|
 |Create an object (prints its id)|`(hbnb) create <class>`|
-|Show an object|`(hbnb) show <class> <id>` |
-|Destroy an object|`(hbnb) destroy <class> <id>` or `(hbnb) <class>.destroy(<id>)`|
+|Show an object|`(hbnb) show <class> <id>`|
+|Destroy an object|`(hbnb) destroy <class> <id>`|
 |Show all objects, or all instances of a class|`(hbnb) all` or `(hbnb) all <class>`|
 |Update an attribute of an object|`(hbnb) update <class> <id> <attribute name> "<attribute value>"` or `(hbnb) <class>.update(<id>, <attribute name>, "<attribute value>")`|
 
