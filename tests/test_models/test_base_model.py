@@ -15,7 +15,6 @@ from models.amenity import Amenity
 from models.state import State
 from models.review import Review
 import os
-#import pep8
 import unittest
 import uuid
 
@@ -26,7 +25,6 @@ class TestBaseModel(unittest.TestCase):
 
     def setUp(self):
         self.model = BaseModel()
-
 
     def tearDown(self):
         """teardown"""
@@ -58,6 +56,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(model_dict['__class__'], 'BaseModel')
         self.assertIsInstance(model_dict['created_at'], str)
         self.assertIsInstance(model_dict['updated_at'], str)
+
 
 if __name__ == '__main__':
     unittest.main()
