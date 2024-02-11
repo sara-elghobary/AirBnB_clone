@@ -31,7 +31,6 @@ The first phase is to manipulate a powerful storage system to give an abstractio
 - create all classes used for AirBnB (`User, State, City, Place…`) that inherit from `BaseModel` .
 - create the first abstracted storage engine of the project: File storage.
 - create all unittests to validate all classes and storage engine.
-- Create a data model.
 - Manage (create, update, destroy, etc....) objects via a console/command interpreter
 - Store and persist objects to files (JSON files).
 
