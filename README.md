@@ -57,8 +57,3 @@ Unittests for the HolbertonBnB project are defined in the tests folder. To run t
 $ python3 unittest -m discover tests
 ```
 
-Alternatively, you can specify a single test file to run at a time:
-
-```
-$ python3 unittest -m tests/test_console.py
-```
