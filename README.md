@@ -31,7 +31,6 @@ The first phase is to manipulate a powerful storage system to give an abstractio
 - create all classes used for AirBnB (`User, State, City, Place…`) that inherit from `BaseModel` .
 - create the first abstracted storage engine of the project: File storage.
 - create all unittests to validate all classes and storage engine.
-- Create a data model.
 - Manage (create, update, destroy, etc....) objects via a console/command interpreter
 - Store and persist objects to files (JSON files).
 
@@ -45,10 +44,10 @@ The console works both in interactive mode and non-interactive mode, much like a
 |Quit the console|`(hbnb) quit`|
 |Display the help for a command|`(hbnb) help <command>`|
 |Create an object (prints its id)|`(hbnb) create <class>`|
-|Show an object|`(hbnb) show <class> <id>` or `(hbnb) <class>.show(<id>)`|
-|Destroy an object|`(hbnb) destroy <class> <id>` or `(hbnb) <class>.destroy(<id>)`|
-|Show all objects, or all instances of a class|`(hbnb) all` or `(hbnb) all <class>`|
-|Update an attribute of an object|`(hbnb) update <class> <id> <attribute name> "<attribute value>"` or `(hbnb) <class>.update(<id>, <attribute name>, "<attribute value>")`|
+|Show an object|`(hbnb) show <class> <id>`|
+|Destroy an object|`(hbnb) destroy <class> <id>`|
+|Show all objects, or all instances of a class|`(hbnb) all`|
+|Update an attribute of an object|`(hbnb) update <class> <id> <attribute name> "<attribute value>"`|
 
 ## Tests
 
@@ -58,8 +57,3 @@ Unittests for the HolbertonBnB project are defined in the tests folder. To run t
 $ python3 unittest -m discover tests
 ```
 
-Alternatively, you can specify a single test file to run at a time:
-
-```
-$ python3 unittest -m tests/test_console.py
-```
