@@ -1,0 +1,109 @@
+section.places {
+    position: relative;
+    text-align: center;
+    padding-bottom: 50px;
+}
+section.places h1 {
+    font-size: 30px;
+    text-align: left;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 0;
+
+}
+
+section.places article {
+    width: 390px;
+    margin: 20px;
+    padding :20px;
+    padding-top: 0;
+    padding-bottom: 15px;
+    border: #FF5A5F solid 1px;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    
+}
+section.places article h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+section.places article div.price_by_night{
+    color: #FF5A5F;
+    border: #FF5A5F solid 4px;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    text-align: right;
+    position: absolute;
+    border-radius:50%;
+    right: 20px;
+    top: 10px;
+    line-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+
+}
+
+section.places article div.information{
+    height: 80px;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    position: relative;
+
+}
+section.places article div.information div {
+    display: inline-block;
+}
+
+section.places article div.information div.max_guest{
+    width: 100px;
+    position: relative;
+    top: 55px;
+}
+
+section.places article div.information div.max_guest::before {
+    position: absolute;
+    left: 25px;
+    top: -50px;
+    content: url(../images/icon_group.png);
+}
+
+section.places article div.information div.number_rooms {
+    position: relative;
+    width: 100px;
+    top: 55px;
+}
+section.places article div.information div.number_rooms::before {
+    position: absolute;
+    left: 25px;
+    top: -50px;
+    content: url(../images/icon_bed.png);
+}
+
+
+section.places article div.information div.number_bathrooms {
+    position: relative;
+    width: 100px;
+    top: 55px;
+}
+section.places article div.information div.number_bathrooms::before {
+    position: absolute;
+    left: 25px;
+    top: -50px;
+    content: url(../images/icon_bath.png);
+}
+section.places article div.user {
+    position: relative;
+    top: 15px;
+    text-align: left;
+}
+section.places article div.description {
+    position: relative;
+    top: 20px;
+    text-align: left;
+}
